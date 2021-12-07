@@ -7,9 +7,14 @@ Make plugins for MCreator!
 
 ## What you can do with MCreatorPluginMaker
 You can:
-* Upload a plugin's JSON or create a plugin
-* Change plugin's basic info (name, description, etc...)
-* Download plugin as JSON
++ Indev-mode v1:
+ * Upload a plugin's JSON or create a plugin
+ * Change plugin's basic info (name, description, etc...)
+ * Download plugin as JSON
+ * Remove plugin
++ Indev-mode v2:
+ * Add a new procedure
+ * See all procedures by their names
 
 ## Credits
 Credits to [JSZIP](https://stuk.github.io/jszip), [FileSaver](https://github.com/eligrey/FileSaver.js), [MCreator](https://mcreator.net/about) and Mojang Studios for [Minecraft](https://minecraft.net/).

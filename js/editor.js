@@ -1,5 +1,8 @@
 var plugin;
 window.onload = function() {
+	if (window.localStorage.getItem("mcpm-proj") == null) {
+		location.replace("../index.html");
+	}
 	plugin = JSON.parse(window.localStorage.getItem("mcpm-proj"));
 	Array.from(document.getElementsByClassName("edit-field")).forEach(function(elm) {
 		elm.type = "button";
@@ -12,6 +15,7 @@ window.onload = function() {
 			editElement(document.getElementById(elmEditing), elmWriteIn);
 		}
 	});
+	ListProcedures();
 }
 window.onbeforeunload = function() {
 	if (document.getElementsByClassName("editable").length)
@@ -51,14 +55,15 @@ function selectElementContents(el) {
 function savePlugin() {
 	window.localStorage.setItem("mcpm-proj", JSON.stringify(plugin));
 }
-function ListProcedures(element) {
+function ListProcedures() {
+	var element = document.getElementById("procedures") ?? document.createElement("ul");
 	if (plugin.procedures instanceof Array) {
 		plugin.procedures.forEach(function(procedure) {
 			var li = document.createElement("li");
 			li.innerText = procedure.json.message0;
 			li.id = procedure.name;
 			li.onclick = function() {
-				location.replace("block-editor.html?" + li.id);
+				location.replace("edit-procedure.html?" + li.id);
 			}
 			element.appendChild(li);
 		});
@@ -83,6 +88,19 @@ If you want to save it, click on "Download".
 Then you can upload it by clicking on the main page on "Upload File".
 Are you really sure?`)) {
 		window.localStorage.removeItem("mcpm-proj");
-		location.replace("../index.html");
+		location.reload(true);
 	}
+}
+function generateProcedure() {
+	plugin.procedures.push({json: {mcreator: {}}});
+	Array.from(document.querySelectorAll("input[type=text]")).forEach(function(elm) {
+		if (!elm.value) {
+			elm.style.backgroundColor = "red";
+			elm.onkeypress = function() {elm.style.backgroundColor = ""};
+			throw TypeError("Not all spaces are filled in.");
+		}
+		eval(`plugin.procedures[plugin.procedures.length - 1].${elm.getAttribute("path")} = elm.value`);
+	});
+	savePlugin();
+	location.replace("index.html");
 }

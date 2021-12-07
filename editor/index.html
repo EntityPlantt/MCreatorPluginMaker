@@ -25,13 +25,14 @@
 		</fieldset>
 		<fieldset>
 			<legend>Procedures</legend>
-			<ul id="procedures" onload="ListProcedures(this)"></ul>
+			<button onclick="location.replace('new-procedure.html')">Add procedure</button>
+			<ul id="procedures"></ul>
 		</fieldset>
 		<fieldset>
 			<legend>Options</legend>
-			<button class="important" onclick="downloadPlugin()">Download</button>
-			<button class="important success" onclick="exportPlugin()">Export</button>
-			<button class="important danger" onclick="removePlugin()">Remove</button>
+			<button onclick="downloadPlugin()">Download</button>
+			<button class="success" onclick="exportPlugin()">Export</button>
+			<button class="danger" onclick="removePlugin()">Remove</button>
 		</fieldset>
 	</div>
 </body>

@@ -60,7 +60,7 @@ legend {
 h2, h3 {
 	font-weight: normal;
 }
-button.important {
+button {
 	padding: 1vh 1.5vw 1vh 1.5vw;
 	margin: 5px;
 	border: hidden;
@@ -70,9 +70,9 @@ button.important {
 	color: white;
 	background-color: gray;
 }
-button.important.success {
+button.success {
 	background-color: green;
 }
-button.important.danger {
+button.danger {
 	background-color: red;
 }
