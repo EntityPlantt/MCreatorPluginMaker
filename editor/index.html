@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Editor - MCreatorPluginMaker</title>
+	<link rel="stylesheet" type="text/css" href="../css/editor.css">
+	<script type="text/javascript" src="../js/editor.js"></script>
+</head>
+<body>
+	<div id="main">
+		<input class="edit-field" editing="title" path="info.name">
+		<h1 id="title"></h1>
+		<input class="edit-field" editing="description" path="info.description">
+		<h2 id="description"></h2>
+		<hr>
+		<fieldset>
+			<legend>Basic info</legend>
+			<input class="edit-field" editing="plugin-id" path="id">
+			<h3>Plugin ID: <span id="plugin-id" style="font-family: monospace;"></span></h3>
+			<input class="edit-field" editing="author" path="info.author">
+			<h3>By <span id="author"></span></h3>
+			<input class="edit-field" editing="credits" path="info.credits">
+			<h3>Credits: <span id="credits"></span></h3>
+		</fieldset>
+		<fieldset>
+			<legend>Procedures</legend>
+			<ul id="procedures" onload="ListProcedures(this)"></ul>
+		</fieldset>
+		<fieldset>
+			<legend>Options</legend>
+			<button class="important" onclick="downloadPlugin()">Download</button>
+			<button class="important success" onclick="exportPlugin()">Export</button>
+			<button class="important danger" onclick="removePlugin()">Remove</button>
+		</fieldset>
+	</div>
+</body>
+</html>
