@@ -1,5 +1,6 @@
-var plugin;
+var plugin, $aqm;
 window.onload = function() {
+	$aqm = document.URL.substring(document.URL.indexOf('?') + 1);
 	if (window.localStorage.getItem("mcpm-proj") == null) {
 		location.replace("../index.html");
 	}
@@ -58,15 +59,14 @@ function savePlugin() {
 function ListProcedures() {
 	var element = document.getElementById("procedures") ?? document.createElement("ul");
 	if (plugin.procedures instanceof Array) {
-		plugin.procedures.forEach(function(procedure) {
+		for (var i = 0; i < plugin.procedures.length; i++) {
+			var procedure = plugin.procedures[i];
 			var li = document.createElement("li");
 			li.innerText = procedure.json.message0;
-			li.id = procedure.name;
-			li.onclick = function() {
-				location.replace("edit-procedure.html?" + li.id);
-			}
+			li.id = i;
+			li.setAttribute("onclick", "location.replace(`procedure.html?${this.id}`);");
 			element.appendChild(li);
-		});
+		}
 	}
 }
 function downloadPlugin() {
@@ -91,16 +91,29 @@ Are you really sure?`)) {
 		location.reload(true);
 	}
 }
-function generateProcedure() {
-	plugin.procedures.push({json: {mcreator: {}}});
-	Array.from(document.querySelectorAll("input[type=text]")).forEach(function(elm) {
-		if (!elm.value) {
-			elm.style.backgroundColor = "red";
-			elm.onkeypress = function() {elm.style.backgroundColor = ""};
-			throw TypeError("Not all spaces are filled in.");
+function newProcedure() {
+	plugin.procedures.push({
+		name: "new_procedure",
+		json: {
+			message0: "example text here",
+			args0: [],
+			colour: 0,
+			inputsInline: false,
+			mcreator: {
+				toolbox_id: "entities",
+				toolbox_init: [],
+				inputs: [],
+				dependencies: []
+			}
 		}
-		eval(`plugin.procedures[plugin.procedures.length - 1].${elm.getAttribute("path")} = elm.value`);
 	});
 	savePlugin();
-	location.replace("index.html");
+	location.replace("procedure.html?" + (plugin.procedures.length - 1));
+}
+function removeProcedure() {
+	if (confirm("Are you sure that you want to remove this procedure?")) {
+		plugin.procedures.splice(parseInt($aqm), 1);
+		savePlugin();
+		location.replace("index.html");
+	}
 }

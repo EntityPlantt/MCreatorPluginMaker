@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Edit procedure - MCreatorPluginMaker</title>
+	<link rel="stylesheet" type="text/css" href="../css/editor.css">
+	<script type="text/javascript" src="../js/editor.js"></script>
+</head>
+<body>
+	<div id="main">
+		<input class="edit-field" editing="title" path="procedures[$aqm].name">
+		<h1 id="title"></h1>
+		<fieldset>
+			<legend>Display</legend>
+			<input class="edit-field" editing="message" path="procedures[$aqm].json.message0">
+			<h3>Message: <span id="message"></span></h3>
+			<h3>Arguments:</h3>
+			<ul id="args"></ul>
+			<button class="success">Add argument</button>
+			<button class="danger">Remove argument</button>
+		</fieldset>
+		<button class="danger" onclick="removeProcedure()">Remove procedure</button>
+		<button onclick="location.replace('index.html')">Back</button>
+	</div>
+</body>
+</html>
