@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Procedure argument - MCreatorPluginMaker</title>
+	<link rel="stylesheet" type="text/css" href="../css/editor.css">
+	<script type="text/javascript" src="../js/editor.js"></script>
+</head>
+<body>
+	<div id="main">
+		<input class="edit-field" editing="title"
+			path-inp="procedures[$aqm[0]].json.args0[$aqm[1]].name"
+			path0="procedures[$aqm[0]].json.args0[$aqm[1]].name"
+			path1="procedures[$aqm[0]].json.mcreator.inputs[$aqm[1]]"
+		>
+		<h1 id="title"></h1>
+		<fieldset>
+			<legend>Argument info</legend>
+			<h3>Type:
+				<select class="edit-select" path="procedures[$aqm[0]].json.args0[$aqm[1]].type">
+					<optgroup label="Input">
+						<option value="input_value">Input value</option>
+						<option value="input_statement">Input statement</option>
+						<option value="input_dummy">Input dummy</option>
+					</optgroup>
+					<optgroup label="Field">
+						<option value="field_checkbox">Field checkbox</option>
+						<option value="field_dropdown">Field dropdown</option>
+						<option value="field_input">Field input</option>
+					</optgroup>
+				</select>
+			</h3>
+		</fieldset>
+		<button onclick="location.replace('procedure.html?' + $aqm[0])">Back</button>
+		<button class="danger" onclick="removeArgument()">Remove procedure argument</button>
+	</div>
+</body>
+</html>

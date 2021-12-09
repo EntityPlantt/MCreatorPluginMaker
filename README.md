@@ -23,5 +23,9 @@ This is grouped by the version.
 #### Indev-mode v3:
  * Change a procedure's basic info
 
+#### Indev-mode v4:
+ * Add a new argument
+ * Change an argument's basic info
+
 ## Credits
 Credits to [JSZIP](https://stuk.github.io/jszip), [FileSaver](https://github.com/eligrey/FileSaver.js), [MCreator](https://mcreator.net/about) and Mojang Studios for [Minecraft](https://minecraft.net/).

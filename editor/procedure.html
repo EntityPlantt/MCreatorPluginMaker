@@ -9,16 +9,15 @@
 </head>
 <body>
 	<div id="main">
-		<input class="edit-field" editing="title" path="procedures[$aqm].name">
+		<input class="edit-field" editing="title" path="procedures[$aqm[0]].name">
 		<h1 id="title"></h1>
 		<fieldset>
 			<legend>Display</legend>
-			<input class="edit-field" editing="message" path="procedures[$aqm].json.message0">
+			<input class="edit-field" editing="message" path="procedures[$aqm[0]].json.message0">
 			<h3>Message: <span id="message"></span></h3>
 			<h3>Arguments:</h3>
 			<ul id="args"></ul>
-			<button class="success">Add argument</button>
-			<button class="danger">Remove argument</button>
+			<button class="success" onclick="newArgument()">Add argument</button>
 		</fieldset>
 		<button class="danger" onclick="removeProcedure()">Remove procedure</button>
 		<button onclick="location.replace('index.html')">Back</button>
